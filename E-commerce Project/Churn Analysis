@@ -1,1 +1,244 @@
+use Nithya
+select * from Edata1
+
+---------------CHURNED DRIVER ANALYSIS -------------------------------------
+
+----------- ChurnRate calculation -------
+SELECT TotalNumberofCustomers, 
+       TotalNumberofChurnedCustomers,
+       CAST((TotalNumberofChurnedCustomers * 1.0 / TotalNumberofCustomers * 1.0)*100 AS DECIMAL(10,2)) AS ChurnRate
+FROM
+(SELECT COUNT(*) AS TotalNumberofCustomers
+FROM Edata1) AS Total,
+(SELECT COUNT(*) AS TotalNumberofChurnedCustomers
+FROM Edata1
+WHERE [Churn flag] = 'churned') AS Churned ------overall churnRate 16.84
+
+--948
+select count([Churn flag])as churned,[Tenure Range] from EData
+where [Churn flag]='Churned'
+group by [Tenure Range]
+
+select (697*100/948)--73% of ppl under 6 months are churned
+
+
+SELECT preferredlogindevice,
+        COUNT(*) AS TotalCustomers,
+        SUM(churn) AS ChurnedCustomers,
+        CAST(SUM (churn) * 1.0 / COUNT(*) * 100 AS DECIMAL(10,2)) AS ChurnRate
+FROM Edata1
+--where [Tenure Range]='more than 2 years'
+GROUP BY preferredlogindevice
+order by ChurnedCustomers
+-----Computer has highest churnrate with 19.83% than phone with 15.62%. along with this people prefferd phone
+ --loyal customers not facing issues with computer
+
+SELECT citytier,
+       COUNT(*) AS TotalCustomer, 
+       SUM(Churn) AS ChurnedCustomers, 
+       CAST(SUM (churn) * 1.0 / COUNT(*) * 100 AS DECIMAL(10,2)) AS ChurnRate
+FROM Edata1
+GROUP BY citytier
+ORDER BY churnrate DESC 
+
+SELECT citytier,
+       COUNT(*) AS TotalCustomer, 
+       SUM(Churn) AS ChurnedCustomers, 
+       CAST(SUM (churn) * 1.0 / COUNT(*) * 100 AS DECIMAL(10,2)) AS ChurnRate
+FROM Edata1
+GROUP BY citytier 
+ORDER BY churnrate DESC --- tier 3 (21%)is most churned than 2(20%) than 1(15%) normally tier 2 and 3 need more discounts so  price is the concern here
+
+
+SELECT WarehouseToHome,
+       COUNT(*) AS TotalCustomer,
+       SUM(Churn) AS CustomerChurn,
+       CAST(SUM(Churn) * 1.0 /COUNT(*) * 100 AS DECIMAL(10,2)) AS Churnrate
+FROM Edata1
+GROUP BY WarehouseToHome
+ORDER BY Churnrate DESC ----------far and little far distance with 21%-20%  , modearate with 18%,nearer with 14% of churn rate
+
+SELECT WarehouseToHome,
+       COUNT(*) AS TotalCustomer,
+       SUM(Churn) AS CustomerChurn,
+       CAST(SUM(Churn) * 1.0 /COUNT(*) * 100 AS DECIMAL(10,2)) AS Churnrate
+FROM Edata1
+where [Tenure Range]='more than 2 years'
+GROUP BY WarehouseToHome
+ORDER BY Churnrate DESC------ distance is not a concern  tenure is
+
+SELECT preferredpaymentmode,
+       COUNT(*) AS TotalCustomer,
+       SUM(Churn) AS CustomerChurn,
+       CAST(SUM(Churn) * 1.0 /COUNT(*) * 100 AS DECIMAL(10,2)) AS Churnrate
+FROM Edata1
+GROUP BY preferredpaymentmode
+ORDER BY Churnrate DESC
+
+SELECT preferredpaymentmode,SatisfactionScore,
+       COUNT(*) AS TotalCustomer,
+       SUM(Churn) AS CustomerChurn,
+       CAST(SUM(Churn) * 1.0 /COUNT(*) * 100 AS DECIMAL(10,2)) AS Churnrate
+FROM Edata1
+GROUP BY preferredpaymentmode,SatisfactionScore
+ORDER BY Churnrate DESC ------------- service is good
+
+SELECT preferredpaymentmode,
+       COUNT(*) AS TotalCustomer,
+       SUM(Churn) AS CustomerChurn,
+       CAST(SUM(Churn) * 1.0 /COUNT(*) * 100 AS DECIMAL(10,2)) AS Churnrate
+FROM Edata1
+where [Tenure Range]='more than 2 years'
+GROUP BY preferredpaymentmode
+ORDER BY Churnrate DESC---------- cod=25%,e wallet=23%,upi=17%,debit=15,cc=14% -- tenure is impacking in deep but we should focus on cod and e wallet delivery issue
+
+SELECT gender,
+       COUNT(*) AS TotalCustomer,
+       SUM(Churn) AS CustomerChurn,
+       CAST(SUM(Churn) * 1.0 /COUNT(*) * 100 AS DECIMAL(10,2)) AS Churnrate
+FROM Edata1
+GROUP BY gender
+ORDER BY Churnrate DESC --no such difference but male are more compare to female
+
+SELECT [Churn flag], avg(hourspendonapp) AS AverageHourSpentonApp
+FROM Edata1
+GROUP BY [Churn flag] ---no difference
+
+SELECT NumberofDeviceRegistered,
+       COUNT(*) AS TotalCustomer,
+       SUM(Churn) AS CustomerChurn,
+       CAST(SUM(Churn) * 1.0 /COUNT(*) * 100 AS DECIMAL(10,2)) AS Churnrate
+FROM Edata1
+GROUP BY NumberofDeviceRegistered
+ORDER BY Churnrate DESC  --number devices increases with increase in churn rate
+
+SELECT NumberofDeviceRegistered,
+       COUNT(*) AS TotalCustomer,
+       SUM(Churn) AS CustomerChurn,
+       CAST(SUM(Churn) * 1.0 /COUNT(*) * 100 AS DECIMAL(10,2)) AS Churnrate
+FROM Edata1
+where [Tenure Range]='more than 2 years'
+GROUP BY NumberofDeviceRegistered
+ORDER BY Churnrate DESC -----------finally tenure is the major  reason
+
+SELECT preferedordercat,
+       COUNT(*) AS TotalCustomer,
+       SUM(Churn) AS CustomerChurn,
+       CAST(SUM(Churn) * 1.0 /COUNT(*) * 100 AS DECIMAL(10,2)) AS Churnrate
+FROM Edata1
+--where [Tenure Range]='more than 2 years'
+GROUP BY preferedordercat
+ORDER BY Churnrate DESC -------- mobile is the topmost churned category 
+
+SELECT satisfactionscore,
+       COUNT(*) AS TotalCustomer,
+       SUM(Churn) AS CustomerChurn,
+       CAST(SUM(Churn) * 1.0 /COUNT(*) * 100 AS DECIMAL(10,2)) AS Churnrate
+FROM Edata1
+--where [Tenure Range]='more than 2 years'
+GROUP BY satisfactionscore
+ORDER BY Churnrate DESC ------most satisfied people are churned the most
+
+SELECT maritalstatus,
+       COUNT(*) AS TotalCustomer,
+       SUM(Churn) AS CustomerChurn,
+       CAST(SUM(Churn) * 1.0 /COUNT(*) * 100 AS DECIMAL(10,2)) AS Churnrate
+FROM Edata1
+--where [Tenure Range]='more than 2 years'
+GROUP BY maritalstatus
+ORDER BY Churnrate DESC --single are most churned
+
+SELECT AVG(numberofaddress) AS Averagenumofchurnedcustomeraddress
+FROM Edata1
+WHERE [Churn flag] = 'churned' --no such diff b\w churned and not churned
+
+SELECT Complain,
+       COUNT(*) AS TotalCustomer,
+       SUM(Churn) AS CustomerChurn,
+       CAST(SUM(Churn) * 1.0 /COUNT(*) * 100 AS DECIMAL(10,2)) AS Churnrate
+FROM Edata1
+--where [Tenure Range]='more than 2 years'
+GROUP BY Complain
+ORDER BY Churnrate DESC ---------complained are most churned
+
+SELECT Couponused,
+       COUNT(*) AS TotalCustomer,
+       SUM(Churn) AS CustomerChurn,
+       CAST(SUM(Churn) * 1.0 /COUNT(*) * 100 AS DECIMAL(10,2)) AS Churnrate
+FROM Edata1
+--where [Tenure Range]='more than 2 years'
+GROUP BY Couponused
+ORDER BY Churnrate DESC ---not having large impact of coupns  less coupn and most coupon  used are more churned
+
+SELECT DaySinceLastOrder,
+       COUNT(*) AS TotalCustomer,
+       SUM(Churn) AS CustomerChurn,
+       CAST(SUM(Churn) * 1.0 /COUNT(*) * 100 AS DECIMAL(10,2)) AS Churnrate
+FROM Edata1
+--where [Tenure Range]='more than 2 years'
+GROUP BY DaySinceLastOrder
+ORDER BY Churnrate DESC ------------- zero days and more than 20 days
+
+SELECT OrderCount,
+       COUNT(*) AS TotalCustomer,
+       SUM(Churn) AS CustomerChurn,
+       CAST(SUM(Churn) * 1.0 /COUNT(*) * 100 AS DECIMAL(10,2)) AS Churnrate
+FROM Edata1
+--where [Tenure Range]='more than 2 years'
+GROUP BY OrderCount
+ORDER BY Churnrate DESC
+
+SELECT OrderAmountHikeFromlastYear,
+       COUNT(*) AS TotalCustomer,
+       SUM(Churn) AS CustomerChurn,
+       CAST(SUM(Churn) * 1.0 /COUNT(*) * 100 AS DECIMAL(10,2)) AS Churnrate
+FROM Edata1
+GROUP BY OrderAmountHikeFromlastYear
+ORDER BY Churnrate DESC -----no impact
+
+SELECT CashbackAmount,
+       COUNT(*) AS TotalCustomer,
+       SUM(Churn) AS CustomerChurn,
+       CAST(SUM(Churn) * 1.0 /COUNT(*) * 100 AS DECIMAL(10,2)) AS Churnrate
+FROM Edata1
+--where [Tenure Range]='more than 2 years'
+GROUP BY CashbackAmount
+having CAST(SUM(Churn) * 1.0 /COUNT(*) * 100 AS DECIMAL(10,2))> 0 
+ORDER BY CashbackAmount DESC --no such patterns
+
+-------------   RECOMENDATION  
+
+-----ACTUALLY HERE WE HAVE GOOD CHURNED DATA BECAUSE LAST PURCHASE IS LESS THAN 20 DAYS AND AMONG PRODUCTS MOST OF ARE BELONGS TO LONG CYCLE EXCEPT GROCERY
+
+--Long purchase cycle items are purchased by many so within 20 days is not a big deal for all items expect grocery
+     --NEW customers may be didnt find valuable items,and missed oppurtunity so we should recommended items based on purchase pattern 
+     --and sending notification ,doing campaigns
+--these are the recommendation for the customers who are --- NEW users BECAUSE CHUERNED MAIN REASON ARE NEW CUSTOMERS
+--------------Major concern is customer who are not loyal means of tenure less than 2 years are churned  
+---login through computer is an issue to new users so 
+       ---we can improve user experience  by optimize the computer login
+	   ---onboarding assistence by Target support for newer customers
+------for tier 3 and 2 we need to use retention strategies by giving incentives for new users
+---- we need to check out problem in cash on delivery and e wallet
+----device management tool for managing registration easily 
+------loyalty program for targetting single cusomers and all new users 
+--Diversify the product offering can reduce churnrate of one perticular product(promotion)
+---there are many reason but giving  innovative product and engaging statisfied customer can help 
+---- need to find root cause for complaints
+----for retaining zero days from last order we can proactive customer service,seamless return and Exchange process,offer a next purchase incentive
+
+
+---------------------------- SEGMENTATION ----------------------------
+
+--New customers 
+select * 
+from Edata1
+where ([Churn flag]='churned' and [Tenure Range] !='more than 2 years') and ( CityTier in (3,2) or Complain='yes' or PreferredLoginDevice='Computer' or WarehouseToHome in ('far distance','little-far')
+or PreferredPaymentMode in ('Cash on Delivery','E wallet') or NumberOfDeviceRegistered>3  or DaySinceLastOrder in ('zero days' , 'more than 20 days')or  PreferedOrderCat ='Mobile' or MaritalStatus='single')
+
+-- Customer At risk 
+select * from Edata1
+where ([Churn flag] ='not_churned' and [Tenure Range] in ('under 6 months','6m-1y','1-2y')   ) and   (DaySinceLastOrder in ('zero days' , 'more than 20 days') or
+CityTier in (3,2)  or  MaritalStatus='Single' or PreferredLoginDevice='Computer' or WarehouseToHome in ('far distance','little-far')
+or PreferredPaymentMode in ('E wallet','Cash on Delivery') or PreferedOrderCat='Mobile' or Complain= 'yes')  
 
