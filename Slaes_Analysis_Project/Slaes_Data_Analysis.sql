@@ -33,7 +33,7 @@ bulk insert inventory
 from 'C:\Users\Nithya\OneDrive - NR\Documents\OneDrive\Documents\Downloads\inventory.csv'
 with(fieldterminator=',',rowterminator='\n',firstrow=2,maxerrors=40)
 
-
+-- EXPLORATORY  DATA ANALYSIS----------------------------------
 -------   DATA CLEANING AND DATA PREPROCESSING       --------------------------
 
 select column_name,data_type
@@ -176,7 +176,7 @@ select
 where rownumber>1
 
 
------------ EXPLORATORY DATA ANALYSIS --------------------
+----------- DATA ANALYSIS --------------------
 
 select MIN(dates),MAX(dates) from sales
 
