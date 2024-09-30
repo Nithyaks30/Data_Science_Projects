@@ -18,21 +18,23 @@ create table inventory(store_id varchar(max),product_id varchar(max),stock_on_ha
 select * from inventory
 
 bulk insert sales
-from 'C:\Users\Admin\Favorites\Downloads\sales.csv'
+from 'C:\Users\Nithya\OneDrive - NR\Documents\OneDrive\Documents\Downloads\sales.csv'
 with(fieldterminator=',',rowterminator='\n',firstrow=2,maxerrors=40)
 
 bulk insert store
-from 'C:\Users\Admin\Favorites\Downloads\stores.csv'
+from 'C:\Users\Nithya\OneDrive - NR\Documents\OneDrive\Documents\Downloads\stores.csv'
 with(fieldterminator=',',rowterminator='\n',firstrow=2,maxerrors=40)
 
 bulk insert product
-from 'C:\Users\Admin\Favorites\Downloads\products.csv'
+from 'C:\Users\Nithya\OneDrive - NR\Documents\OneDrive\Documents\Downloads\products.csv'
 with(fieldterminator=',',rowterminator='\n',firstrow=2,maxerrors=40)
 
 bulk insert inventory
-from 'C:\Users\Admin\Favorites\Downloads\inventory.csv'
+from 'C:\Users\Nithya\OneDrive - NR\Documents\OneDrive\Documents\Downloads\inventory.csv'
 with(fieldterminator=',',rowterminator='\n',firstrow=2,maxerrors=40)
 
+
+-------   DATA CLEANING AND DATA PREPROCESSING       --------------------------
 
 select column_name,data_type
 from information_schema.COLUMNS
@@ -61,7 +63,7 @@ alter table sales
 alter column sales_id int 
   
 alter table sales
-alter column dates date ---problem
+alter column dates date 
 
 alter table sales
 alter column store_id int
@@ -108,6 +110,9 @@ select* from product
 
 alter table product
 alter column product_id int
+
+update product set product_id=REPLACE(product_id,'$','')
+from product
 
 update product set product_cost=REPLACE(product_cost,'$','')
 from product
@@ -170,7 +175,12 @@ select
 *from dupli
 where rownumber>1
 
+
+----------- EXPLORATORY DATA ANALYSIS --------------------
+
 select MIN(dates),MAX(dates) from sales
+
+---Sales performance Evaluation
 
 select year(dates),sum(units)
 from sales
@@ -449,12 +459,13 @@ select * from product
 select * from store
 select * from inventory
 
-select p.product_name,s.store_name,i.stock_on_hand from product p
+select p.product_id, p.product_name,s.store_name,i.stock_on_hand from product p
 join inventory i on p.product_id = i.product_id
 join store s  on  s.store_id=i.store_id
 where i.stock_on_hand = 0
+order by product_id
 
-with t as (select  distinct p.product_name from product p
+with t as (select  distinct p.product_id, p.product_name from product p
 join inventory i on p.product_id = i.product_id
 join store s  on  s.store_id=i.store_id
 where i.stock_on_hand = 0)
@@ -475,3 +486,5 @@ where i.stock_on_hand = 0
  order by sum(s.units) desc
 
  ---even top 20 high demand product also out of stock
+
+ 
