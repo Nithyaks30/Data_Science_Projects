@@ -1,0 +1,122 @@
+Financial Data Validation & Portfolio Analytics Automation
+Project Overview
+
+This project automates an end-to-end financial data validation and portfolio analytics workflow using Python and SQL Server. The solution streamlines the ingestion of Excel-based financial datasets, executes SQL-based data quality validations, applies business rules, creates clean analytical datasets, and generates portfolio analytics for reporting and decision support.
+
+The objective is to reduce manual effort, standardize data quality processes, and automate the execution of enterprise SQL workflows through Python.
+
+Business Problem
+
+Financial institutions receive security master, pricing, holdings, transactions, and FX data from multiple upstream systems. Manual validation and execution of SQL scripts are time-consuming, error-prone, and difficult to maintain.
+
+The business requires an automated framework capable of:
+
+Importing multiple datasets
+Executing standardized SQL validations
+Detecting data quality issues
+Cleaning invalid records
+Enforcing business rules
+Creating analytical views
+Supporting portfolio risk analysis
+Solution
+
+Developed a Python automation framework that orchestrates the complete SQL workflow, enabling repeatable and consistent execution of financial data quality checks and portfolio analytics.
+
+Workflow
+Excel Files
+      │
+      ▼
+Python Automation
+      │
+      ▼
+SQL Server
+      │
+      ▼
+Raw Tables
+      │
+      ▼
+Flagged Tables
+      │
+      ▼
+Data Validation
+      │
+      ▼
+Business Rule Validation
+      │
+      ▼
+Clean Tables
+      │
+      ▼
+Portfolio Analytics Views
+      │
+      ▼
+Business Insights
+Technologies
+Python
+SQL Server
+SQL
+Pandas
+pyodbc
+OpenPyXL
+Excel
+Python Automation
+
+The automation framework performs:
+
+Database Connection
+Excel File Import
+Table Creation
+Bulk Data Loading
+SQL Script Execution
+Validation Execution
+Exception Logging
+Clean Data Generation
+View Creation
+Report Export
+SQL Validation Framework
+
+The SQL layer performs:
+
+Schema Validation
+Referential Integrity Checks
+Data Type Validation
+Duplicate Detection
+Null Validation
+Business Rule Validation
+Constraint Enforcement
+Reconciliation
+Exception Identification
+Financial Analytics:-
+Portfolio Valuation
+Unrealized P&L
+Market Value
+Book Value
+FX Exposure
+Interest Rate Risk
+Issuer Concentration
+Maturity Analysis
+Yield Analysis
+Portfolio Summary
+Skills Demonstrated:-
+SQL
+Python Automation
+SQL Server
+Data Validation
+Data Quality
+Data Reconciliation
+Financial Data Processing
+Portfolio Analytics
+Root Cause Analysis
+Business Rule Validation
+ETL Concepts
+
+Business Value
+
+The automation framework:
+
+Eliminates repetitive manual SQL execution
+Standardizes financial data validation
+Improves data quality consistency
+Reduces validation effort
+Supports repeatable analytical workflows
+Enables reliable portfolio reporting
