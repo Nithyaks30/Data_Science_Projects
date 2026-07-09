@@ -1,0 +1,35 @@
+Project Overview
+
+Problem Statement
+
+Retail businesses generate large volumes of sales, product, store, and inventory data, but raw data often contains quality issues and does not directly provide actionable insights.
+
+The objective of this project was to analyze retail sales and inventory data to identify business performance gaps such as:
+- Sales growth trends and revenue contribution
+- Top-performing stores and products
+- Product profitability
+- Inventory efficiency
+- Stock-out risks affecting sales opportunities
+
+---
+
+### Skills & Technologies Used
+
+- **SQL Server** – Database creation, data loading, transformation, and analysis
+- **SQL** – Joins, CTEs, Window Functions, Aggregations, CASE statements, Date Functions
+- **Data Cleaning** – Handling inconsistent formats, invalid values, datatype conversion, duplicate checks
+- **Business Analytics** – KPI calculation, sales performance analysis, profitability analysis, inventory analysis
+- **Data Analysis Approach** – Exploratory Data Analysis (EDA) and business-driven insights generation
+
+---
+
+### Solutions Delivered
+
+- Cleaned and transformed raw retail datasets into analysis-ready tables
+- Built SQL-based analytical solutions to evaluate sales, revenue, cost, and profit performance
+- Identified high-performing stores, products, and categories contributing to business growth
+- Performed year-over-year sales comparison to understand growth and decline patterns
+- Calculated product profitability and revenue contribution metrics
+- Analyzed inventory turnover to evaluate stock utilization efficiency
+- Identified stock-out products, including high-demand items with inventory availability issues
+- Generated insights that help businesses improve inventory planning, sales strategy, and operational decisions
