@@ -1,0 +1,114 @@
+
+📌 Customer Churn Analysis & Retention Strategy
+📖 Project Overview
+
+Customer retention is one of the most important business challenges in the e-commerce industry. Acquiring a new customer is significantly more expensive than retaining an existing one. This project focuses on identifying the key factors influencing customer churn through exploratory data analysis (EDA), SQL-based business analysis, and customer segmentation.
+
+The objective is to uncover churn patterns, understand customer behavior, identify at-risk customers, and recommend data-driven retention strategies to improve customer loyalty and reduce churn.
+
+🎯 Business Problem
+
+The company observed an increasing customer churn rate but lacked visibility into:
+
+Which customers are most likely to churn
+What factors contribute to customer churn
+Which customer segments require immediate attention
+What business actions can improve customer retention
+🎯 Project Objectives
+Calculate overall customer churn rate
+Analyze customer behavior across different business dimensions
+Identify churn drivers using SQL
+Validate business hypotheses through EDA
+Perform customer segmentation
+Conduct root cause analysis
+Recommend actionable retention strategies
+🛠️ Tools & Technologies
+SQL
+Microsoft SQL Server
+Advanced SQL
+Exploratory Data Analysis (EDA)
+Business Analysis
+Customer Segmentation
+📊 Analysis Performed
+Overall Churn Rate Analysis
+Customer Tenure Analysis
+Login Device Analysis
+City Tier Analysis
+Warehouse Distance Analysis
+Payment Method Analysis
+Device Registration Analysis
+Product Category Analysis
+Complaint Analysis
+Customer Satisfaction Analysis
+Coupon Usage Analysis
+Order Frequency Analysis
+Cashback Analysis
+Last Purchase Analysis
+Customer Segmentation
+🔍 Key Business Insights
+New customers showed the highest churn rate, indicating onboarding and early engagement require improvement.
+Customer tenure was identified as one of the strongest indicators of churn.
+Customers using computers for login experienced higher churn than mobile users.
+Customers from Tier-2 and Tier-3 cities demonstrated higher churn behavior.
+Complaint history had a significant impact on customer retention.
+Mobile product buyers showed comparatively higher churn.
+Customers using Cash on Delivery and E-Wallet payment methods exhibited higher churn risk.
+Multiple registered devices were associated with increased churn probability.
+Days since the last order emerged as an important retention indicator.
+🎯 Customer Segmentation
+
+The project classifies customers into:
+
+New Customers
+
+Recently acquired customers showing high churn probability based on tenure, complaints, payment preferences, login behavior, and purchase activity.
+
+At-Risk Customers
+
+Active customers exhibiting churn characteristics who require proactive retention strategies.
+
+💡 Business Recommendations
+Strengthen onboarding experience for new customers.
+Improve desktop login experience.
+Launch targeted retention campaigns for Tier-2 and Tier-3 cities.
+Investigate Cash on Delivery and E-Wallet payment issues.
+Improve complaint resolution turnaround time.
+Personalize product recommendations based on purchase behavior.
+Introduce loyalty programs for high-risk customer segments.
+Offer proactive engagement for inactive customers.
+Optimize cross-selling and promotional campaigns.
+Monitor churn KPIs continuously through dashboards.
+📈 Business Impact
+
+This analysis enables businesses to:
+
+Identify high-risk customers early
+Improve customer retention strategies
+Increase customer lifetime value
+Reduce customer acquisition costs
+Support data-driven business decisions
+Enhance customer engagement through targeted campaigns
+📂 Repository Structure
+📁 Customer-Churn-Analysis
+│
+├── Dataset
+├── SQL Scripts
+├── Data Cleaning
+├── Exploratory Data Analysis
+├── Customer Segmentation
+├── Business Insights
+├── Recommendations
+├── Dashboard (Optional)
+└── README.md
+🚀 Skills Demonstrated
+SQL
+Advanced SQL
+Business Analysis
+Exploratory Data Analysis (EDA)
+Data Validation
+Root Cause Analysis
+Customer Analytics
+Customer Segmentation
+Business Hypothesis Validation
+Data Storytelling
+Business Recommendation
